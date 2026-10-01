@@ -37,6 +37,7 @@ addBtn.addEventListener("click", function () {
     updateTotalCount();
     updatePendingCount();
     updateCompletedCount();
+    showEmptyMessage();
 });
 
 
@@ -54,6 +55,7 @@ taskList.addEventListener("click", function (event) {
         updateTotalCount();
         updatePendingCount();
         updateCompletedCount();
+        showEmptyMessage();
     }
 
 
@@ -93,7 +95,7 @@ taskList.addEventListener("change", function (event) {
 
         saveTasks();
         updateTotalCount();
-        updatePendingCount();   
+        updatePendingCount();
         updateCompletedCount();
     }
 
@@ -215,13 +217,19 @@ if (savedTasks) {
     });
 }
 
-clearBtn.addEventListener("click", function() {
+clearBtn.addEventListener("click", function () {
+    const confirmClear = confirm("Are you sure you want to delete all tasks?");
+
+    if (!confirmClear) {
+        return;
+    }
     taskList.innerHTML = "";
 
     localStorage.removeItem("tasks");
     updateTotalCount();
     updatePendingCount();
     updateCompletedCount();
+    showEmptyMessage();
 });
 
 function updateTotalCount() {
@@ -245,3 +253,30 @@ function updateCompletedCount() {
 updateTotalCount();
 updatePendingCount();
 updateCompletedCount();
+
+function showEmptyMessage() {
+
+    const existingMessage = document.querySelector(".empty-message");
+
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+
+    const tasks = document.querySelectorAll(".task");
+
+    if (tasks.length === 0) {
+
+        const message = document.createElement("p");
+
+        message.classList.add("empty-message");
+
+        message.innerHTML = `
+    No tasks yet!<br>
+    Add your first task above.
+`;
+
+        taskList.appendChild(message);
+    }
+}
+
+showEmptyMessage();
