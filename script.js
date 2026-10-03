@@ -1,3 +1,10 @@
+const logoutBtn = document.getElementById("logoutBtn");
+
+logoutBtn.addEventListener("click", function () {
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "login.html";
+
+});
 const taskInput = document.getElementById("taskInput");
 const addBtn = document.getElementById("addBtn");
 const taskList = document.getElementById("taskList");
