@@ -9,6 +9,17 @@
 </head>
 
 <body>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <h2>TaskFlow</h2>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Dashboard</a>
+            <a href="#taskList">My Tasks</a>
+            <a href="#about">About</a>
+            <button id="logoutBtn">Logout</button>
+        </div>
+    </nav>
 
     <div class="todo-container">
 
@@ -18,7 +29,6 @@
                 <span class="check-icon">✓</span>
                 To-Do List
             </h1>
-            <button id="logoutBtn">Logout</button>
             <p>Small steps make big progress ♥</p>
         </header>
 
@@ -74,13 +84,23 @@
         </div>
 
     </div>
-
+    <section id="about" class="about-section">
+        <h2>About TaskFlow</h2>
+        <p>
+            TaskFlow helps you organize your daily tasks,
+            track your progress, and stay productive.
+        </p>
+    </section>
+    <footer class="footer">
+        <p>© 2026 TaskFlow. All rights reserved.</p>
+    </footer>
     <script>
-    if (localStorage.getItem("isLoggedIn") !== "true") {
-        window.location.href = "login.html";
-    }
-</script>
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.href = "login.html";
+        }
+    </script>
     <script src="script.js"></script>
+
 
 </body>
 
